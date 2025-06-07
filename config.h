@@ -203,21 +203,21 @@ static const Key keys[] = {
 	{ MODKEY,			XK_l,          setmfact,               {.f = +0.05} },
 	{ MODKEY,			XK_semicolon,  shiftview,              { .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,  shifttag,               { .i = 1 } },
-	{ MODKEY,			XK_apostrophe, togglescratch,          {.ui = 1} },
+	{ MODKEY,			XK_apostrophe, spawn,	               {.v = (const char*[]){ "dmenuunicode", NULL } } },
 	/* { MODKEY|ShiftMask,		XK_apostrophe, spawn,                  SHCMD("") }, */
 	{ MODKEY|ShiftMask,		XK_apostrophe, togglesmartgaps,        {0} },
 	{ MODKEY,			XK_Return,     spawn,                  {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_Return,     togglescratch,          {.ui = 0} },
 
 	{ MODKEY,			XK_z,          incrgaps,               {.i = +3 } },
-	/* { MODKEY|ShiftMask,		XK_z,          spawn,                  SHCMD("") }, */
+	{ MODKEY|ShiftMask,		XK_z,          spawn,                  SHCMD("bluetooth") },
 	{ MODKEY,			XK_x,          incrgaps,               {.i = -3 } },
-	/* { MODKEY|ShiftMask,		XK_x,          spawn,                  SHCMD("") }, */
+	/*{ MODKEY|ShiftMask,		XK_x,          spawn,                  SHCMD("bluetooth") }, */
 	{ MODKEY,			XK_c,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "profanity", NULL } } },
-	/* { MODKEY|ShiftMask,		XK_c,          spawn,                  SHCMD("") }, */
+	{ MODKEY|ShiftMask,		XK_c,          spawn,                  {.v = (const char*[]){"sh", "-c", "webcamtoggle",  NULL } } },
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,          togglebar,              {0} },
-	/* { MODKEY|ShiftMask,		XK_b,          spawn,                  SHCMD("") }, */
+	{ MODKEY|ShiftMask,		XK_b,          spawn,                  {.v = (const char*[]){"bookmarkthis",  NULL } } },
 	{ MODKEY,			XK_n,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "nvim", "-c", "VimwikiIndex", NULL } } },
 	{ MODKEY|ShiftMask,		XK_n,          spawn,                  SHCMD(TERMINAL " -e newsboat ; pkill -RTMIN+6 dwmblocks") },
 	{ MODKEY,			XK_m,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "ncmpcpp", NULL } } },
@@ -334,3 +334,4 @@ static const Button buttons[] = {
 	{ ClkTagBar,		0,		     Button5,	     shiftview,      {.i = 1} },
 	{ ClkRootWin,		0,		     Button2,	     togglebar,      {0} },
 };
+
