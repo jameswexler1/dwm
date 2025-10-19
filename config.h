@@ -214,7 +214,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_z,          incrgaps,               {.i = +3 } },
 	{ MODKEY|ShiftMask,		XK_z,          spawn,                  SHCMD("bluetooth") },
 	{ MODKEY,			XK_x,          incrgaps,               {.i = -3 } },
-	// { MODKEY|ShiftMask,		XK_x,          spawn,                  {.v = (const char*[]){"cheater",  NULL } } },
+	// { MODKEY|ShiftMask,		XK_x,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "nchat"} } },
 	{ MODKEY,			XK_c,          spawn,                  SHCMD("editclipboard") },
 	{ MODKEY|ShiftMask,		XK_c,          spawn,                  {.v = (const char*[]){"sh", "-c", "webcamtoggle",  NULL } } },
 	/* V is automatically bound above in STACKKEYS */
