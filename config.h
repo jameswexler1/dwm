@@ -4,6 +4,11 @@
 #define TERMINAL "st"
 #define TERMCLASS "St"
 #define BROWSER "librewolf"
+#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+/* max length for tag names (including room for the number prefix and NUL) */
+#define MAX_TAGNAME_LEN 32
+/* how to print the tag number prefix — nametag uses sprintf(tags[i], TAG_PREPEND, i+1) */
+
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -42,7 +47,9 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static char tags[][MAX_TAGNAME_LEN] = {
+    "1", "2", "3", "4", "5", "6", "7", "8", "9"
+};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -66,7 +73,7 @@ static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static int nmaster     = 1;    /* number of clients in master area */
 static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
-#define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+#define TAG_PREPEND "%d: "
 #include "vanitygaps.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -241,7 +248,7 @@ static const Key keys[] = {
 	{ MODKEY, XK_Insert, spawn, SHCMD("xdotool type $(grep -v '^#' ~/.local/share/larbs/snippets | dmenu -i -l 50 -F | cut -d' ' -f1)") },
 
 	{ MODKEY,			XK_F1,         spawn,                  SHCMD("groff -mom /usr/local/share/dwm/larbs.mom -Tpdf | zathura -") },
-	{ MODKEY,			XK_F2,         spawn,                  {.v = (const char*[]){ "tutorialvids", NULL } } },
+        { MODKEY,                       XK_F2,      nametag,        {0} },
 	{ MODKEY,			XK_F3,         spawn,                  {.v = (const char*[]){ "displayselect", NULL } } },
 	{ MODKEY,			XK_F4,         spawn,                  SHCMD(TERMINAL " -e pulsemixer; kill -44 $(pidof dwmblocks)") },
 	{ MODKEY,			XK_F5,         xrdb,                   {.v = NULL } },
