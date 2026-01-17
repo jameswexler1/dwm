@@ -176,7 +176,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_w,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "nmtui", NULL } } },
 	{ MODKEY,			XK_e,          spawn,                  SHCMD(TERMINAL " -e neomutt ; pkill -RTMIN+12 dwmblocks; rmdir ~/.abook 2>/dev/null") },
 	{ MODKEY|ShiftMask,		XK_e,          spawn,                  SHCMD(TERMINAL " -e abook -C ~/.config/abook/abookrc --datafile ~/.config/abook/addressbook") },
-	{ MODKEY,			XK_r,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
+	{ MODKEY,			XK_r,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "yazi", NULL } } }, /* to go back to lfub, just replace yazi*/
 	{ MODKEY|ShiftMask,		XK_r,          spawn,                  {.v = (const char*[]){ TERMINAL, "-e", "htop", NULL } } },
 	{ MODKEY,			XK_t,          setlayout,              {.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,          setlayout,              {.v = &layouts[1]} }, /* bstack */
@@ -213,17 +213,17 @@ static const Key keys[] = {
 	{ MODKEY,			XK_semicolon,  shiftview,              { .i = 1 } },
 	{ MODKEY|ShiftMask,		XK_semicolon,  shifttag,               { .i = 1 } },
 	{ MODKEY,			XK_apostrophe, spawn,	               {.v = (const char*[]){ "dmenuunicode", NULL } } },
-	/* { MODKEY|ShiftMask,		XK_apostrophe, spawn,                  SHCMD("") }, */
-	{ MODKEY|ShiftMask,		XK_apostrophe, togglesmartgaps,        {0} },
+	{ MODKEY|ShiftMask,		XK_apostrophe, spawn,                  SHCMD("managerrrrr") },
+	// { MODKEY|ShiftMask,		XK_apostrophe, togglesmartgaps,        {0} }, I commented this out to be able to do the above
 	{ MODKEY,			XK_Return,     spawn,                  {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_Return,     togglescratch,          {.ui = 0} },
 
 	{ MODKEY,			XK_z,          incrgaps,               {.i = +3 } },
 	{ MODKEY|ShiftMask,		XK_z,          spawn,                  SHCMD("bluetooth") },
 	{ MODKEY,			XK_x,          incrgaps,               {.i = -3 } },
-	// { MODKEY|ShiftMask,		XK_x,          spawn,                  {.v = (const char*[]){ "trenot", NULL} } },
+	// { MODKEY|ShiftMask,		XK_x,          spawn,                  {.v = (const char*[]){ "trenot", NULL} } }, for some reason this is not working
 	{ MODKEY,			XK_c,          spawn,                  SHCMD("editclipboard") },
-	{ MODKEY|ShiftMask,		XK_c,          spawn,                  {.v = (const char*[]){"sh", "-c", "webcamtoggle",  NULL } } },
+	// { MODKEY|ShiftMask,		XK_c,          spawn,                  {.v = (const char*[]){"sh", "-c", "webcamtoggle",  NULL } } },
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY,			XK_b,          togglebar,              {0} },
 	{ MODKEY|ShiftMask,		XK_b,          spawn,                  {.v = (const char*[]){"bookmarkthis",  NULL } } },
