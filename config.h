@@ -66,6 +66,7 @@ static const Rule rules[] = {
 	{ TERMCLASS,  "spcalc",    NULL,       	 SPTAG(1),    1,           1,          0,         -1 },
 	{ "Localsend", "localsend", NULL,         0,           1,           0,          0,         -1 },
 	{ TERMCLASS,  "FloatingTerm", NULL,      0,           1,           1,          0,         -1 },
+	{ "wallpapermenu", NULL, NULL, 0, 1, -1 },
 };
 
 /* layout(s) */
