@@ -187,8 +187,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_u,          setlayout,              {.v = &layouts[5]} }, /* monocle */
 	{ MODKEY,			XK_i,          setlayout,              {.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,		XK_i,          setlayout,              {.v = &layouts[7]} }, /* centeredfloatingmaster */
-	{ MODKEY,			XK_o,          spawn,                  {.v = (const char*[]){"trenot", NULL } } },
-	{ MODKEY|ShiftMask,		XK_o,          incnmaster,             {.i = -1 } },
+	{ MODKEY,			XK_o,          spawn,                  {.v = (const char*[]){ "dmenu", "-A", "/tmp/gemini_answer.txt", "-p", "Hehe:", NULL } } },
+	{ MODKEY|ShiftMask,		XK_o,          spawn,                  {.v = (const char*[]){"cheater", NULL } } },
 	{ MODKEY,			XK_p,          spawn,                  {.v = (const char*[]){ "mpc", "toggle", NULL } } },
 	{ MODKEY|ShiftMask,		XK_p,          spawn,                  SHCMD("mpc pause; pauseallmpv") },
 	{ MODKEY,			XK_bracketleft, spawn,                 {.v = (const char*[]){ "mpc", "seek", "-10", NULL } } },
@@ -222,7 +222,7 @@ static const Key keys[] = {
 	{ MODKEY,			XK_z,          incrgaps,               {.i = +3 } },
 	{ MODKEY|ShiftMask,		XK_z,          spawn,                  SHCMD("bluetooth") },
 	{ MODKEY,			XK_x,          incrgaps,               {.i = -3 } },
-	// { MODKEY|ShiftMask,		XK_x,          spawn,                  {.v = (const char*[]){ "trenot", NULL} } }, for some reason this is not working
+	// { MODKEY|ShiftMask, XK_x, spawn, {.v = (const char*[]){ "dmenu", "-A", "/tmp/gemini_answer.txt", "-p", "Hehe:", NULL } } },
 	{ MODKEY,			XK_c,          spawn,                  SHCMD("editclipboard") },
 	// { MODKEY|ShiftMask,		XK_c,          spawn,                  {.v = (const char*[]){"sh", "-c", "webcamtoggle",  NULL } } },
 	/* V is automatically bound above in STACKKEYS */
