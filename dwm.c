@@ -302,6 +302,7 @@ static const char broken[] = "broken";
 static char stext[1024];
 static char rawstext[256];
 static int dwmblockssig;
+static int statusw;
 pid_t dwmblockspid = 0;
 static int screen;
 static int sw, sh;           /* X display screen geometry width, height */
@@ -589,7 +590,7 @@ buttonpress(XEvent *e)
 			arg.ui = 1 << i;
 		} else if (ev->x < x + TEXTW(selmon->ltsymbol))
 			click = ClkLtSymbol;
-		else if (ev->x > (x = selmon->ww - (int)TEXTW(stext) + lrpad)) {
+		else if (ev->x > (x = selmon->ww - statusw)) {
 			click = ClkStatusText;
 
 			char *text = rawstext;
@@ -606,6 +607,19 @@ buttonpress(XEvent *e)
 					i = -1;
 					if (x >= ev->x) break;
 					dwmblockssig = ch;
+				} else if (text[i] == '^') {
+					/* status2d codes are not visible; only ^fN^ moves x. */
+					text[i] = '\0';
+					x += TEXTW(text) - lrpad;
+					text[i] = '^';
+					if (text[++i] == 'f')
+						x += atoi(text + ++i);
+					while (text[i] && text[i] != '^')
+						i++;
+					if (!text[i])
+						break;
+					text += i + 1;
+					i = -1;
 				}
 			}
 		} else
@@ -1017,7 +1031,7 @@ drawbar(Monitor *m)
 
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
-		tw = m->ww - drawstatusbar(m, bh, stext);
+		tw = statusw = m->ww - drawstatusbar(m, bh, stext);
 	}
 
 	for (c = m->clients; c; c = c->next) {
@@ -2893,4 +2907,3 @@ main(int argc, char *argv[])
 	XCloseDisplay(dpy);
 	return EXIT_SUCCESS;
 }
-
